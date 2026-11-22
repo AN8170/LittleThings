@@ -1,25 +1,119 @@
-# Little Things — Shared Christmas wishlist
+<div align="center">
+  <img src="assets/logo.png" alt="Little Things — The Christmas Edition" width="343" />
 
-## Setup (one time)
+  <h3>Make a little list. Share a little magic.</h3>
 
-1. In your Supabase project dashboard, open SQL Editor, create a New query, paste `setup.sql`, and run it once. The script uses three new `lt_` tables and applies access policies in a transaction.
-2. In Authentication → URL Configuration, set the Site URL to `https://an8170.github.io/LittleThings/` (or the exact custom-domain URL if you use one). Add the same address as an allowed Redirect URL.
-3. Keep email authentication enabled. For normal public signup, configure a custom SMTP provider in Supabase Auth so signup confirmations can reach people outside the project team. For a private two-person test, you can instead create and confirm the two users manually in Authentication → Users, then have them sign in with their email and password. Do not share passwords.
-4. Upload `index.html`, `holiday.css`, `holiday.js`, `cloud.css`, and `cloud.js` to the root of your GitHub Pages repository, replacing the existing three files. Keep your existing CNAME and other unrelated files. The SQL and this README can stay local.
-5. After deployment, open the GitHub Pages URL and sign in. Create a wishlist, copy its invitation code, and send it privately to your partner. The partner creates their own account, signs in, and joins with the code. It expires after seven days and becomes invalid upon use. The creator can regenerate it before it is used.
+  <p>A private Christmas wishlist for two, built for thoughtful gifts, cozy traditions, and the joy of giving.</p>
 
-## Data
+  <a href="https://an8170.github.io/LittleThings/"><strong>Open the wishlist</strong></a>
+  · <a href="#getting-started">Getting started</a>
+  · <a href="#how-it-works">How it works</a>
 
-Each account belongs to one couple; each couple can have at most two members. Both members can edit shared names, budget and wishes. Row-level security limits all wish and settings operations to members of the corresponding couple. The website refreshes every five seconds, so it does not require enabling Realtime publications. The Supabase publishable key is intentionally visible to the browser; never replace it with a service-role or secret key.
+  <p>
+    <img src="https://img.shields.io/badge/HTML5-A33D43?logo=html5&logoColor=white&style=flat-square" alt="HTML5" />
+    <img src="https://img.shields.io/badge/CSS3-234F40?logo=css&logoColor=white&style=flat-square" alt="CSS" />
+    <img src="https://img.shields.io/badge/JavaScript-D6AD68?logo=javascript&logoColor=white&style=flat-square" alt="JavaScript" />
+    <img src="https://img.shields.io/badge/Supabase-Database-234F40?logo=supabase&logoColor=white&style=flat-square" alt="Supabase" />
+  </p>
+</div>
 
-If you have the earlier browser-local version, export its wishlist JSON before updating. After pairing, import it through Couple settings to append its gifts. This also works between devices; it does not overwrite the current wishlist. Existing browser-local data is not automatically uploaded.
+---
 
-## Verify before sharing widely
+## 🎄 About Little Things
 
-- Sign in with account A and create a couple. Add a gift and set a budget.
-- In a separate browser profile, sign in with account B and join using the code. Check that both see the gift and budget.
-- Add and edit gifts from both profiles. Check updates appear within a few seconds. Sign out and sign back in to verify persistence.
-- Try a third account: it must not see the couple's data, and it must not be able to reuse the consumed code.
-- Verify a newly generated code invalidates the old one and that an account cannot join a second couple.
+Little Things began with a simple idea: Christmas shopping should feel personal, not complicated. Instead of sending screenshots, scattered links, or separate notes, couples can keep their holiday wishes together in one cozy space.
 
-The backend script must be installed before testing; these live checks have not been run against your project.
+Each couple gets their own private wishlist, accessible from either partner's device. Create an account, connect with a single invitation code, and start planning Christmas together.
+
+## ✨ Features
+
+| Feature | Description |
+| --- | --- |
+| 🎁 Individual wishlists | Keep track of what each partner would love to receive. |
+| 💚 Shared wishes | Plan matching gifts, holiday dates, and experiences together. |
+| 🔗 Couple pairing | Connect two accounts using a private, single-use invitation code. |
+| 💸 Gift budget | Estimate total gift costs and see how much remains in your budget. |
+| 🛍️ Gift organization | Add product links, prices, categories, priorities, and helpful notes. |
+| ✅ Shopping checklist | Mark gifts as purchased and revisit checked-off items. |
+| ❄️ Christmas countdown | Count down the days until December 25. |
+| ☁️ Cross-device sync | Access your shared list on different devices, with updates checked every five seconds. |
+| 📦 Import & export | Back up your wishlist or append gifts from an existing export. |
+
+## 💌 How it works
+
+1. **Create an account** using your email and password.
+2. **Create a wishlist** and copy your unique invitation code.
+3. **Share the code** privately with your partner.
+4. **Connect** when your partner signs in with their own account and joins using the code.
+5. **Make Christmas magical** by adding gifts, setting a budget, and planning holiday memories together.
+
+The invitation code expires after seven days and can only be used once. Both partners can access the wishlist afterward by signing in, without needing the code again.
+
+## 🛠️ Built with
+
+- **HTML, CSS & JavaScript** — responsive Christmas-themed interface, with no build step.
+- **Supabase Auth** — individual email/password accounts.
+- **Supabase PostgreSQL** — persistent couples, membership, and gift records.
+- **Row-level security** — database access is restricted to the members of each couple.
+- **GitHub Pages** — static website hosting.
+
+## Getting started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/AN8170/LittleThings.git
+cd LittleThings
+```
+
+### 2. Configure your own Supabase project
+
+1. Create a project at [Supabase](https://supabase.com/).
+2. Open **SQL Editor**, create a query, and run `setup.sql` once.
+3. In `cloud.js`, replace the existing project URL and publishable key with your own project's values.
+4. Under **Authentication → URL Configuration**, set the Site URL and allowed redirect URL to your deployed address.
+5. Enable email authentication and configure custom SMTP for public account confirmation emails. For a private test, create and confirm test accounts manually in the dashboard.
+
+> [!IMPORTANT]
+> Only use the Supabase publishable key in the frontend. Never commit a secret key, service-role key, or database password.
+
+### 3. Run locally
+
+```bash
+python -m http.server 8000
+```
+
+Open `http://localhost:8000` in your browser. Add this address to Supabase's allowed redirect URLs when testing authentication locally.
+
+### 4. Deploy
+
+Push the files to your GitHub repository. In **Settings → Pages**, choose **Deploy from a branch**, select `main` and `/(root)`, and save. Configure your Supabase Site URL to match the published website.
+
+## 📁 Project structure
+
+| File | Purpose |
+| --- | --- |
+| `index.html` | Page layout, login and pairing screens, gift forms |
+| `holiday.css` | Christmas theme and responsive wishlist styles |
+| `holiday.js` | Gift management, filters, budget, and countdown |
+| `cloud.js` | Supabase connection, authentication, pairing, and synchronization |
+| `cloud.css` | Account and pairing screen styles |
+| `setup.sql` | Database schema, access policies, and pairing functions |
+| `assets/logo.png` | Little Things Christmas logo |
+
+## 🔒 Privacy & data
+
+- Each account can join one couple, and each couple can have at most two partners.
+- Database policies restrict gift records and settings to that couple's members.
+- Both partners can edit their shared wishlist and budget; the purchased status is visible to both.
+- Invite codes are single-use and expire after seven days. Do not post them publicly.
+- Old browser-local wishes are not uploaded automatically. Export them from the original version and import the backup into the shared list through Couple settings.
+
+Before inviting users beyond a test couple, verify sign-in, pairing, synchronization, and access isolation with separate test accounts.
+
+---
+
+<div align="center">
+  <p>Made with care for the little things that make Christmas special. ♡</p>
+  <a href="https://github.com/AN8170">@AN8170</a>
+</div>
