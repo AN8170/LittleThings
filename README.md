@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/logo.png" alt="Little Things — The Christmas Edition" width="343" />
+  <img src="Assets/logo.png" alt="Little Things — The Christmas Edition" width="343" />
 
   <h3>Make a little list. Share a little magic.</h3>
 
