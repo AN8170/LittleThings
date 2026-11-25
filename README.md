@@ -5,7 +5,7 @@
 
   <p>A private Christmas wishlist for two, built for thoughtful gifts, cozy traditions, and the joy of giving.</p>
 
-  <a href="https://an8170.github.io/LittleThings/"><strong>Open the wishlist</strong></a>
+  <a href="https://littlethings-ke3q.onrender.com/"><strong>Open the wishlist</strong></a>
   · <a href="#getting-started">Getting started</a>
   · <a href="#how-it-works">How it works</a>
 
@@ -56,50 +56,6 @@ The invitation code expires after seven days and can only be used once. Both par
 - **Supabase PostgreSQL** — persistent couples, membership, and gift records.
 - **Row-level security** — database access is restricted to the members of each couple.
 - **GitHub Pages** — static website hosting.
-
-## Getting started
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/AN8170/LittleThings.git
-cd LittleThings
-```
-
-### 2. Configure your own Supabase project
-
-1. Create a project at [Supabase](https://supabase.com/).
-2. Open **SQL Editor**, create a query, and run `setup.sql` once.
-3. In `cloud.js`, replace the existing project URL and publishable key with your own project's values.
-4. Under **Authentication → URL Configuration**, set the Site URL and allowed redirect URL to your deployed address.
-5. Enable email authentication and configure custom SMTP for public account confirmation emails. For a private test, create and confirm test accounts manually in the dashboard.
-
-> [!IMPORTANT]
-> Only use the Supabase publishable key in the frontend. Never commit a secret key, service-role key, or database password.
-
-### 3. Run locally
-
-```bash
-python -m http.server 8000
-```
-
-Open `http://localhost:8000` in your browser. Add this address to Supabase's allowed redirect URLs when testing authentication locally.
-
-### 4. Deploy
-
-Push the files to your GitHub repository. In **Settings → Pages**, choose **Deploy from a branch**, select `main` and `/(root)`, and save. Configure your Supabase Site URL to match the published website.
-
-## 📁 Project structure
-
-| File | Purpose |
-| --- | --- |
-| `index.html` | Page layout, login and pairing screens, gift forms |
-| `holiday.css` | Christmas theme and responsive wishlist styles |
-| `holiday.js` | Gift management, filters, budget, and countdown |
-| `cloud.js` | Supabase connection, authentication, pairing, and synchronization |
-| `cloud.css` | Account and pairing screen styles |
-| `setup.sql` | Database schema, access policies, and pairing functions |
-| `assets/logo.png` | Little Things Christmas logo |
 
 ## 🔒 Privacy & data
 
